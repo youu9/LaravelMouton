@@ -11,6 +11,6 @@ class SpendUserTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+
     }
 }

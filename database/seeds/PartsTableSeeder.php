@@ -11,6 +11,7 @@ class PartsTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $parts = factory(\App\Parts::class, 10)->create();
+
     }
 }

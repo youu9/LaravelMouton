@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: Younes
  * Date: 20/11/2017
- * Time: 16:26
+ * Time: 16:25
  */
 
 namespace App;
@@ -11,10 +11,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parts extends Model
+class Spend extends Model
 {
 
-    public function user(){
-        return $this->belongsTo('App\User');
+
+    public function users(){
+        return $this->belongsToMany('App\User');
     }
 }

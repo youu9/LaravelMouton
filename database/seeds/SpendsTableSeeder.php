@@ -11,30 +11,26 @@ class SpendsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::Table('spends')->insert(array([
-            'title' => 'admin',
-            'description' => 'admin@admin.fr',
-            'status' => Hash::make('admin'),
-        ],
-            [
-                'pseudo' => 'editor',
-                'email' => 'editor@editor.fr',
-                'password' => Hash::make('editor'),
-            ],
-            [
-                'pseudo' => 'paul',
-                'email' => 'paul@paul.fr',
-                'password' => Hash::make('paul'),
-            ],
-            [
-                'pseudo' => 'eric',
-                'email' => 'eric@eric.fr',
-                'password' => Hash::make('eric'),
-            ],
-            [
-                'pseudo' => 'adrien',
-                'email' => 'adrien@adrien.fr',
-                'password' => Hash::make('adrien'),
-            ]) );
+        $spends = factory(\App\Spend::class, 10)->create()->each(function ($spend){
+
+            $ids = App\User::pluck('id')->all();
+
+            $randomKeys = array_rand($ids, rand(1, count($ids)));
+            $selectIds = [];
+
+            if(is_array($randomKeys)){
+                for($i=0; $i<count($randomKeys); $i++) {
+                    array_push($selectIds, $ids[$randomKeys[$i]]);
+                }
+            }else{
+                $selectIds[] = $ids[$randomKeys];
+            }
+
+
+            $price = $spend->price / count($selectIds);
+            $spend->users()->attach($selectIds, ['price' => $price]);
+
+        });
+
     }
 }

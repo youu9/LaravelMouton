@@ -1,4 +1,11 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: Younes
+ * Date: 21/11/2017
+ * Time: 10:02
+ */
+
 
 use Faker\Generator as Faker;
 
@@ -13,13 +20,14 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\User::class, function (Faker $faker) {
-    static $password;
+$factory->define(App\Spend::class, function (Faker $faker) {
+    static $tab = ['in progress', 'paid', 'canceled'];
 
     return [
-        'pseudo' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'title' => $faker->sentence(3),
+        'description' => $faker->text(30),
+        'pay_date' => $faker->dateTime(),
+        'status' => $faker->randomElement($tab),
+        'price' => $faker->randomFloat(2, 0, 1000)
     ];
 });
