@@ -16,9 +16,9 @@ class CreateSpendsTable extends Migration
         Schema::create('spends', function (Blueprint $table) {
             $table->increments('id');
             $table->char('title', 100);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->dateTime('pay_date');
-            $table->enum('status', ['in progress', 'paid', 'canceled']);
+            $table->enum('status', ['account', 'paid'])->default('paid');
             $table->decimal('price', 7,2);
             $table->timestamps();
         });

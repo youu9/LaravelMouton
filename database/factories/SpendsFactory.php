@@ -21,7 +21,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\Spend::class, function (Faker $faker) {
-    static $tab = ['in progress', 'paid', 'canceled'];
+    static $tab = ['paid', 'account'];
 
     return [
         'title' => $faker->sentence(3),
