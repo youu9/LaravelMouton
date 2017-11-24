@@ -13,6 +13,7 @@ class SpendsTableSeeder extends Seeder
     {
         $spends = factory(\App\Spend::class, 10)->create()->each(function ($spend){
 
+
             $ids = App\User::pluck('id')->all();
 
             $randomKeys = array_rand($ids, rand(1, count($ids)));
