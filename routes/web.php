@@ -18,3 +18,4 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'FrontController@spends')->name('home')->middleware('auth');
+Route::get('chart', 'ChartController@index')->middleware('auth');
