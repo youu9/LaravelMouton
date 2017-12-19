@@ -7,9 +7,10 @@
  */
 
 namespace App;
-
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
+
 
 class Spend extends Model
 {
@@ -25,5 +26,10 @@ class Spend extends Model
 
     public function users(){
         return $this->belongsToMany('App\User');
+    }
+
+    public function scopeTotal($query){
+
+        return $query->select(DB::raw('SUM(price) as total'))->get()->toArray();
     }
 }

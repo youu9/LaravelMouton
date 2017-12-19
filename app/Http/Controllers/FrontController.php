@@ -21,7 +21,6 @@ class FrontController extends Controller
         view()->composer('front.home', function ($view) {
             $users = User::all();
             $view->with('users', $users);
-
         });
     }
 
@@ -29,20 +28,21 @@ class FrontController extends Controller
     {
         $spends = Spend::orderBy('pay_date', 'DESC')->take(3)->get();
         $spendsOrd = Spend::all();
-        $users = User::all();
         $u = Auth::user();
+        $total = Spend::total();
+        $tot = $total[0];
 
 
-        return view('front.home', compact('spends', 'users', 'u', 'spendsOrd'));
+        return view('front.home', compact('spends', 'u', 'spendsOrd', 'tot'));
     }
 
     public function addSpend()
     {
         $spends = Spend::all();
-        $users = User::all();
         $u = Auth::id();
         $uLog = User::findOrFail($u);
 
-        return view('front.spend', compact('spends', 'users', 'uLog'));
+        return view('front.spend', compact('spends', 'uLog'));
     }
+
 }

@@ -18,7 +18,12 @@ class CreateUsersTable extends Migration
             $table->string('pseudo', 100);
             $table->string('email',100)->unique();
             $table->string('password', 100);
+            $table->boolean('isAdmin')->default(false);
             $table->string('avatar_link')->nullable();
+
+            $table->integer('trip_id')->unsigned()->nullable();
+            $table->foreign('trip_id')->references('id')->on('trip');
+
             $table->rememberToken();
             $table->timestamps();
         });

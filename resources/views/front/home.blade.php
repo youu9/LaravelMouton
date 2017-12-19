@@ -8,6 +8,11 @@
             <h2>3 derniere depense.
             </h2>
             <div class="panel-group">
+
+                @foreach($tot as $t)
+                 Total dépense du voyage {{$t}} €
+                @endforeach
+
                 @foreach($spends as $spe)
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>{{$spe->title}}</h3>
@@ -16,6 +21,7 @@
                     <div class="panel-body">{{$spe->description}}</div>
                 </div>
                 @endforeach
+
             </div>
         </div>
     </div>
@@ -31,6 +37,7 @@
                                                         href="{{route('addSpend')}}">Ajout dépense</a></p>
 
             <div class="panel-group">
+
                 @foreach($u->spends as $spend)
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>{{$spend->title}}</h3>

@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'pseudo', 'email', 'password',
+        'pseudo', 'email', 'password','isAdmin'
     ];
 
     /**
@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function isAdmin():bool
+    {
+        return $this->isAdmin === 1; // this looks for an admin column in your users table
+    }
 
     public function balances(){
         return $this->hasOne('App\Balances');
@@ -39,4 +43,6 @@ class User extends Authenticatable
     public function part(){
         return $this->hasOne('App\Part');
     }
+
+
 }
