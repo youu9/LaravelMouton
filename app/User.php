@@ -44,5 +44,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Part');
     }
 
+    public function trip(){
+        return $this->belongsTo('App\Trip');
+    }
+
 
 }

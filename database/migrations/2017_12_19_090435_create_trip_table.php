@@ -17,7 +17,7 @@ class CreateTripTable extends Migration
             $table->increments('id');
             $table->string('trip', 100);
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->dateTime('end_date')->nullable();
 
 
             $table->integer('admin_user_id')->unsigned();
