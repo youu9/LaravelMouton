@@ -8,10 +8,11 @@
 ?>
 @extends('layouts.app')
 @section('content')
-<h1> Créér un voyage </h1>
+
 
 <div class="container">
     <div class="row">
+        <h1> Créer un voyage </h1>
         <fieldset>
             <form action="{{route('trip.store')}}" method="post">
                 {{ csrf_field() }}
