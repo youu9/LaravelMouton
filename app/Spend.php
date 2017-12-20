@@ -25,7 +25,7 @@ class Spend extends Model
     protected $table = 'spends';
 
     public function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->withPivot('price');
     }
 
     public function scopeTotal($query){

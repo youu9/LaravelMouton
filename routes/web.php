@@ -18,8 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'FrontController@spends')->name('home')->middleware('auth');
-Route::get('chart', 'ChartController@index')->name('chart')->middleware('auth');
-Route::get('addSpend', 'FrontController@addSpend')->name('addSpend')->middleware('auth');
+Route::get('/chart', 'ChartController@index')->name('chart')->middleware('auth');
+Route::get('/addSpend', 'FrontController@addSpend')->name('addSpend')->middleware('auth');
 Route::get('/addTrip', 'TripController@index')->name('addTrip')->middleware('auth');
 
 // Route::post('store', 'FrontController@storeSpend')->name('store')->middleware('auth');

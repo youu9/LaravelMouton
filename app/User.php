@@ -37,7 +37,7 @@ class User extends Authenticatable
     }
 
     public function spends(){
-        return $this->belongsToMany('App\Spend');
+        return $this->belongsToMany('App\Spend')->withPivot('price');
     }
 
     public function part(){

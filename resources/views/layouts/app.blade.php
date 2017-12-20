@@ -49,7 +49,8 @@
                 <ul class="nav navbar-nav">
                     &nbsp;<li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('chart') }}">Charts</a></li>
-                    <li><a href="{{ route('addSpend') }}">Spend</a></li>
+                    <li><a href="{{ route('addSpend') }}">Add Spend</a></li>
+                    <li><a href="{{ route('addTrip') }}">Create Trip</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

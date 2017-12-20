@@ -3,10 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Spend;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SpendController extends Controller
 {
+    public function __construct()
+    {
+        view()->composer('front.spend', function ($view) {
+            $users = User::all();
+            $u = Auth::id();
+            $view->with(compact('users', 'u'));
+        });
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *

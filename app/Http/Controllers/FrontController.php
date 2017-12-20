@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
-    public function __construct()
-    {
-        view()->composer('front.home', function ($view) {
-            $users = User::all();
-            $view->with('users', $users);
-        });
-    }
 
     public function spends()
     {
@@ -40,9 +33,10 @@ class FrontController extends Controller
     {
         $spends = Spend::all();
         $u = Auth::id();
+        $users = User::all();
         $uLog = User::findOrFail($u);
 
-        return view('front.spend', compact('spends', 'uLog'));
+        return view('front.spend', compact('spends', 'uLog', 'users'));
     }
 
 }
