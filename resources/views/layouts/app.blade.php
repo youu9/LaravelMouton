@@ -50,7 +50,11 @@
                     &nbsp;<li><a href="{{ route('home') }}">Home</a></li>
                     <li><a href="{{ route('chart') }}">Charts</a></li>
                     <li><a href="{{ route('addSpend') }}">Add Spend</a></li>
+                    @if (Auth::user() && Auth::user()->isAdmin)
                     <li><a href="{{ route('addTrip') }}">Create Trip</a></li>
+                    @endif
+
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -63,7 +67,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"
                            aria-haspopup="true">
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ Auth::user()->pseudo }} <span class="caret"></span>
                         </a>
 
                         <ul class="dropdown-menu">
