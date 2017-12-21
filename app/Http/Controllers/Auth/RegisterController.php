@@ -44,7 +44,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -59,7 +59,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\User
      */
     protected function create(array $data)
@@ -70,13 +70,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-       /* Mail::send('mail.welcome', $data, function ($message) use ($data){
-            $message->from('no-reply@syte.com', "Site name");
-            $message->subject("Welcome to site name");
-            $message->to($data['email']);
-        });*/
-
-       Mail::to($user)->send(new Welcome);
+        Mail::to($user)->send(new Welcome($user));
 
         return $user;
 
