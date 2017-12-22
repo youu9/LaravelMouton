@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Spend;
 use App\User;
-
-use App\Http\Requests;
-use Charts;
+use ConsoleTVs\Charts\Facades\Charts;
 
 class ChartController extends Controller
 {
@@ -17,8 +15,8 @@ class ChartController extends Controller
         //List des pseudo utilisateur.
         $tab = [];
         //Somme de spend de chaque utilisateur
-        $tot = [];
-        //Somme spend total du Trip
+        $tot =[];
+        //Somme totale depense Trip
         $total = Spend::total();
         $totTrip = $total[0];
 
@@ -26,11 +24,13 @@ class ChartController extends Controller
             array_push($tab, $user->pseudo);
             $spends = $user->spends;
             $sum = 0;
-            foreach ($spends as $spend) {
-                $sum += $spend->pivot->price;
+            foreach ($spends as $spend){
+                $sum+= $spend->pivot->price;
             }
             array_push($tot, $sum);
         }
+        dump($tab);
+        dump($tot);
 
         $chart = Charts::multi('bar', 'material')
             // Setup the chart settings

@@ -10,7 +10,7 @@
             <div class="panel-group">
 
                 @foreach($tot as $t)
-                 Total dépense du voyage {{$t}} €
+                Total dépense du voyage {{$t}} €
                 @endforeach
 
                 @foreach($spends as $spe)

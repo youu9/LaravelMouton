@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             @foreach($totTrip as $tot)
-            <h1>Total Trip Spends : {{$tot}} €</h1>
+            <h1>Total Trip spends : {{$tot}} €</h1>
             @endforeach
             <div class="panel panel-default">
                 <div class="panel-body">

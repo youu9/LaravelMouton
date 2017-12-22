@@ -17,6 +17,7 @@ class TripController extends Controller
             $view->with(compact('users', 'u'));
         });
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -50,20 +51,20 @@ class TripController extends Controller
             'trip' => 'required|max:100',
             'start_date' => 'date',
             'admin_user_id' => 'required',
+            'users' => 'required',
         ]);
 
 
         $trip = Trip::create($request->all());
 
-        // User::update(['trip_id' => $trip->id]);
-
-        return redirect()->route('home');
-    }
-
-    public function link($ids){
-        foreach ($ids as $id){
-            User::find($id)->update(['trip_id'=>1]);
+        $ids = $request->users;
+        $mail = [];
+        foreach ($ids as $id) {
+            User::find($id)->update(['trip_id' => 1]);
+            array_push($mail, User::find($id)->email);
         }
+
+        //return redirect()->route('home');
     }
 
     /**

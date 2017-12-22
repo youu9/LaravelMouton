@@ -22,7 +22,5 @@ Route::get('/chart', 'ChartController@index')->name('chart')->middleware('auth')
 Route::get('/addSpend', 'FrontController@addSpend')->name('addSpend')->middleware('auth');
 Route::get('/addTrip', 'TripController@index')->name('addTrip')->middleware('auth');
 
-// Route::post('store', 'FrontController@storeSpend')->name('store')->middleware('auth');
-
 Route::resource('spend', 'SpendController')->middleware('auth');
 Route::resource('trip', 'TripController')->middleware('auth');
