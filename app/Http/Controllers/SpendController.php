@@ -53,17 +53,22 @@ class SpendController extends Controller
             'title' => 'required|max:100',
             'description' => ['required'],
             'pay_date' => 'date',
+            'users' => 'required',
             'status' => 'nullable',
             'price' => 'integer|required',
         ]);
 
         $users = $request->users;
+        $price = $request->price;
 
+        if(count($users)>1){
+            $price = $price / count($users);
+        }
 
         $spend = Spend::create($request->all());
-        $spend->users()->attach($users, ['price' => $request->price]);
+        $spend->users()->attach($users, ['price' => $price]);
 
-        return redirect()->route('home');
+       // return redirect()->route('home');
     }
 
     /**

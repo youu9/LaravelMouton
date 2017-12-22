@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\TripAdd;
+use App\Mail\Welcome;
 use App\Trip;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class TripController extends Controller
 {
@@ -54,17 +57,16 @@ class TripController extends Controller
             'users' => 'required',
         ]);
 
-
         $trip = Trip::create($request->all());
 
         $ids = $request->users;
-        $mail = [];
+
         foreach ($ids as $id) {
             User::find($id)->update(['trip_id' => 1]);
-            array_push($mail, User::find($id)->email);
+            //Envoi mail pour new trip
+            Mail::to(User::find($id))->send(new TripAdd(User::find($id)));
         }
-
-        //return redirect()->route('home');
+        return redirect()->route('home');
     }
 
     /**

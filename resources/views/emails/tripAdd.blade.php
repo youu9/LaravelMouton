@@ -9,10 +9,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Yaaaaay ! A trip has been booked!</title>
 </head>
 <body>
-    <h1>Hey {{$user->pseudo}} Welcom to my Mouton App ! </h1>
+    <h1>Hey {{$user->pseudo}} You have been added to a new trip ! </h1>
+
+    <p>Come visit us <a href="http://phpecolemultimedia/Laravel/mouton/public">here</a> for more information !</p>
+    <span>Cya soon ;)</span>
 </body>
 
 </html>

@@ -30,7 +30,7 @@
 
                 <div class="col-md-6">
                     <label class="col-md-2 control-label" for="users">Users</label>
-                    <select id="users" name="users" class="form-control" multiple="multiple">
+                    <select id="users" name="users[]" class="form-control" multiple="multiple">
                         @foreach($users as $user)
                         <option value="{{$user->id}}">{{$user->pseudo}}</option>
                         @endforeach
@@ -46,7 +46,7 @@
                 </div>
                 <div class="col-md-12">
                     <label class="col-md-2 control-label" for="status">Status</label>
-                    <select id="Users" name="status" class="form-control" multiple="multiple">
+                    <select id="status" name="status" class="form-control" multiple="multiple">
                         <option value="paid">Paid</option>
                         <option value="account">Account</option>
                     </select>

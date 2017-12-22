@@ -27,6 +27,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public static function findByEmail($mail)
+    {
+        $target = User::where('email', $mail)
+            ->take(1)
+            ->get();
+
+        return $target;
+    }
+
     public function isAdmin():bool
     {
         return $this->isAdmin === 1; // this looks for an admin column in your users table

@@ -29,8 +29,6 @@ class ChartController extends Controller
             }
             array_push($tot, $sum);
         }
-        dump($tab);
-        dump($tot);
 
         $chart = Charts::multi('bar', 'material')
             // Setup the chart settings
