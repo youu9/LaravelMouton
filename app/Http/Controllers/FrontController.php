@@ -22,8 +22,7 @@ class FrontController extends Controller
         $spends = Spend::orderBy('pay_date', 'DESC')->take(3)->get();
         $spendsOrd = Spend::all();
         $u = Auth::user();
-        $total = Spend::total();
-        $tot = $total[0];
+        $tot = Spend::total();
 
 
         return view('front.home', compact('spends', 'u', 'spendsOrd', 'tot'));

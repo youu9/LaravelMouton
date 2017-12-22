@@ -9,7 +9,7 @@
             </h2>
             <div class="panel-group">
 
-                Total dépense du voyage {{$totTrip}} €
+                Total dépense du voyage {{$tot}} €
 
                 @foreach($spends as $spe)
                 <div class="panel panel-default">
