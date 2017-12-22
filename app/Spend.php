@@ -28,8 +28,8 @@ class Spend extends Model
         return $this->belongsToMany('App\User')->withPivot('price');
     }
 
-    public function scopeTotal($query){
+    public function scopeTotal($query):int{
 
-        return $query->select(DB::raw('SUM(price) as total'))->get()->toArray();
+        return $query->select(DB::raw('SUM(price) as total'))->first()->total?? 0;
     }
 }

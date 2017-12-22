@@ -68,7 +68,7 @@ class SpendController extends Controller
         $spend = Spend::create($request->all());
         $spend->users()->attach($users, ['price' => $price]);
 
-       // return redirect()->route('home');
+        return redirect()->route('home');
     }
 
     /**

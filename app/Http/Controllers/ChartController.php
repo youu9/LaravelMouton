@@ -17,8 +17,7 @@ class ChartController extends Controller
         //Somme de spend de chaque utilisateur
         $tot =[];
         //Somme totale depense Trip
-        $total = Spend::total();
-        $totTrip = $total[0];
+        $totTrip = Spend::total();
 
         foreach ($users as $user) {
             array_push($tab, $user->pseudo);
